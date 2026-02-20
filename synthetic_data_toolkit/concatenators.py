@@ -9,7 +9,7 @@ logging.basicConfig(
 )
 
 class BatchConcatenator:
-    def concateate(self, path: str = 'generated'):
+    def concatenate(self, path: str = 'generated'):
         batches: list = os.listdir(path)
         df = pd.concat([self.__to_csv(self.__read(os.path.join(path, batch))) for batch in batches])
         return df
@@ -44,6 +44,6 @@ class BatchConcatenator:
 
 if __name__ == "__main__":
     concatenator = BatchConcatenator()
-    df = concatenator.concateate()
+    df = concatenator.concatenate()
     df.to_csv('synthetic_data.csv', index=False)
     logging.info("All batches concatenated and saved to synthetic_data.csv")
