@@ -42,3 +42,8 @@ class BatchConcatenator:
 
         return df         
 
+if __name__ == "__main__":
+    concatenator = BatchConcatenator()
+    df = concatenator.concateate()
+    df.to_csv('synthetic_data.csv', index=False)
+    logging.info("All batches concatenated and saved to synthetic_data.csv")
