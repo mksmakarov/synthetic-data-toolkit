@@ -1,5 +1,5 @@
 import click
-from synthetic_data_toolkit.synthetic import SyntheticDataGenerator
+from synthetic_data_toolkit.generators import CSVSyntheticDataGenerator
 
 @click.group()
 def cli():
@@ -13,9 +13,9 @@ def cli():
 @click.option('--temperature', '-t', default=0.7, help='The temperature for generation (0.0 to 1.0).')
 def generate(prompt, output, max_tokens, temperature):
     """Generate synthetic data based on a prompt."""
-    generator = SyntheticDataGenerator()
+    csv_generator = CSVSyntheticDataGenerator()
     click.echo("Generating synthetic data...")
-    result = generator.generate(prompt, max_tokens=max_tokens, temperature=temperature)
+    result = csv_generator.generate(prompt, max_tokens=max_tokens, temperature=temperature)
     
     if result:
         with open(output, 'w') as f:
